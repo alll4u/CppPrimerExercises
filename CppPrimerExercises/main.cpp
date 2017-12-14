@@ -3,6 +3,7 @@
 #include <list>
 #include <forward_list>
 #include <fstream>
+#include <string>
 /*
  * @ No      :9.26
  * @ brief   :单迭代器erase删除list元素
@@ -76,12 +77,36 @@ int main(int argc, char *argv[])
 //        else
 //            beg++;
 //    }
-    for(int i=0;str.size()-i>=oldVal.size();){
-        if(str.substr(i, oldVal.size())==oldVal){
-            str.replace(i, oldVal.size(), newVal);
-        }
-        i++;
+//    for(int i=0;str.size()-i>=oldVal.size();){
+//        if(str.substr(i, oldVal.size())==oldVal){
+//            str.replace(i, oldVal.size(), newVal);
+//        }
+//        i++;
+//    }
+//    cout << (string::npos== str.find("absdas"));
+//    cout << str << endl;
+
+//    ifstream in;
+//    in.open("/Users/fei/letters.txt");
+//    if(!in)
+//        cout << "error" << endl;
+//    size_t longest=0;
+//    string longest_str;
+//    for(string word;in>>word;){
+//        if(word.find_first_not_of("aceimnorsuvwxz")==string::npos)
+//            if(word.size()>longest)
+//                longest_str=word;
+//    }
+//    cout << longest_str;
+    string test = "ab2c4d7c4e6";
+    string number{"1234567890"};
+    string character = "abcdefg";
+    vector<string> results;
+    cout << "numeric characters:"<<endl;
+    for(string::size_type pos=0;pos!=string::npos;++pos){
+        pos = pos=test.find_first_of(number,pos);
+        cout << "position: "<<pos<<endl;
+        cout << test[pos] << " ";
     }
-    cout << str << endl;
     return 0;
 }
