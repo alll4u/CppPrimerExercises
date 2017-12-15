@@ -120,7 +120,8 @@ int main(int argc, char *argv[])
     using KeyType = std::map<int, std::string>::key_type;
     cout << "type to subscript: "<<typeid(KeyType).name() << endl;
     cout << "returned from the subscript operator: "<<typeid(decltype(m[1])).name() << endl;
-
+    vector<int> ss = {1,2,3,4};
+    ss.back
 
     return 0;
 }
