@@ -110,18 +110,34 @@ int main(int argc, char *argv[])
 //        cout << test[pos] << " ";
 //    }
 
-    multimap<string, string> example={{"aaa", "bbb"},{"ddd","d"}};
-    multimap<string, string> family;
-    family.insert(example.begin(), example.end());
-    for(auto e:family){
-        cout << e.first << ":" << e.second<<endl;
-    }
-    map<int, string> m = {{1,"ss"}, {2, "sz"}};
-    using KeyType = std::map<int, std::string>::key_type;
-    cout << "type to subscript: "<<typeid(KeyType).name() << endl;
-    cout << "returned from the subscript operator: "<<typeid(decltype(m[1])).name() << endl;
-    vector<int> ss = {1,2,3,4};
-    ss.back
+//    multimap<string, string> example={{"aaa", "bbb"},{"ddd","d"}};
+//    multimap<string, string> family;
+//    family.insert(example.begin(), example.end());
+//    for(auto e:family){
+//        cout << e.first << ":" << e.second<<endl;
+//    }
+//    map<int, string> m = {{1,"ss"}, {2, "sz"}};
+//    using KeyType = std::map<int, std::string>::key_type;
+//    cout << "type to subscript: "<<typeid(KeyType).name() << endl;
+//    cout << "returned from the subscript operator: "<<typeid(decltype(m[1])).name() << endl;
+//    vector<int> ss = {1,2,3,4};
+
+    /*
+     * @ No      :11.35
+     * @ brief   :associative container INSERT v.s. subscript operations
+     *
+     */
+    map<int, int> tmp = {{111,111},{222,222}};
+    map<int, int> mp = {{1,2},{3,4},{5,6}};
+    auto c = mp.insert(mp.begin(), {9,4});
+//    cout << c.first->second << ":"<< c.second << endl;
+//    auto d = mp.insert(tmp.begin(), tmp.end());
+//    cout << d.first->second << ":"<< d.second << endl;
+    mp.insert({1,4});
+    mp[3]=5;
+    mp[3]=6;
+    for(auto e:mp)
+        cout << e.first << ":"<< e.second << endl;
 
     return 0;
 }
