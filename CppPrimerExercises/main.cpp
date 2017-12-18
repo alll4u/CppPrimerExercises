@@ -12,9 +12,33 @@
  */
 
 using namespace std;
+void process(shared_ptr<int> ptr){
+    cout << "inside the process function:" << ptr.use_count() << endl;
+}
 
 int main(int argc, char *argv[])
 {
+    shared_ptr<int> p(new int(42));
+    cout << p.use_count() << endl;
+    int *q = p.get();
+    {
+        shared_ptr<int>(q);
+    }
+    int foo = *p;
+    cout << foo << endl;
+    process(shared_ptr<int>(p));
+    int *x = new int(1024);
+//    process(x);
+    process(shared_ptr<int>(x));
+    int j=*x;
+
+    {
+        auto sp = make_shared<int>();
+        auto p = sp.get();
+        delete p;
+    }
+
+
 //    int ia[]={0,2,2,2,1,1,2,3,5,8,13,21,55,89};
 //    vector<int> vec(ia, end(ia));
 //    list<int> lst(ia, end(ia));
@@ -127,17 +151,17 @@ int main(int argc, char *argv[])
      * @ brief   :associative container INSERT v.s. subscript operations
      *
      */
-    map<int, int> tmp = {{111,111},{222,222}};
-    map<int, int> mp = {{1,2},{3,4},{5,6}};
-    auto c = mp.erase(mp.end());
-    cout << c->first << ":"<< c->second << endl;
-//    auto d = mp.insert(tmp.begin(), tmp.end());
-//    cout << d.first->second << ":"<< d.second << endl;
-    mp.insert({1,4});
-    mp[3]=5;
-    mp[3]=6;
-    for(auto e:mp)
-        cout << e.first << ":"<< e.second << endl;
+//    map<int, int> tmp = {{111,111},{222,222}};
+//    map<int, int> mp = {{1,2},{3,4},{5,6}};
+//    auto c = mp.erase(mp.end());
+//    cout << c->first << ":"<< c->second << endl;
+////    auto d = mp.insert(tmp.begin(), tmp.end());
+////    cout << d.first->second << ":"<< d.second << endl;
+//    mp.insert({1,4});
+//    mp[3]=5;
+//    mp[3]=6;
+//    for(auto e:mp)
+//        cout << e.first << ":"<< e.second << endl;
 
     return 0;
 }
