@@ -18,25 +18,37 @@ void process(shared_ptr<int> ptr){
 
 int main(int argc, char *argv[])
 {
-    shared_ptr<int> p(new int(42));
-    cout << p.use_count() << endl;
-    int *q = p.get();
-    {
-        shared_ptr<int>(q);
-    }
-    int foo = *p;
-    cout << foo << endl;
-    process(shared_ptr<int>(p));
-    int *x = new int(1024);
-//    process(x);
-    process(shared_ptr<int>(x));
-    int j=*x;
+    /*
+     * @ No      :12.xx
+     * @ brief   :shared_ptr
+     *
+     */
+//    shared_ptr<int> p(new int(42));
+//    cout << p.use_count() << endl;
+//    int *q = p.get();
+//    {
+//        shared_ptr<int>(q);
+//    }
+//    int foo = *p;
+//    cout << foo << endl;
+//    process(shared_ptr<int>(p));
+//    int *x = new int(1024);
+////    process(x);
+//    process(shared_ptr<int>(x));
+//    int j=*x;
 
-    {
-        auto sp = make_shared<int>();
-        auto p = sp.get();
-        delete p;
-    }
+//    {
+//        auto sp = make_shared<int>();
+//        auto p = sp.get();
+//        delete p;
+//    }
+    /*
+     * @ No      :12.xx
+     * @ brief   :unique_ptr
+     *
+     */
+    unique_ptr<int> up(new int(42));
+    unique_ptr<int> cpy_up = up;
 
 
 //    int ia[]={0,2,2,2,1,1,2,3,5,8,13,21,55,89};
