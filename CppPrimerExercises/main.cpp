@@ -129,8 +129,8 @@ int main(int argc, char *argv[])
      */
     map<int, int> tmp = {{111,111},{222,222}};
     map<int, int> mp = {{1,2},{3,4},{5,6}};
-    auto c = mp.insert(mp.begin(), {9,4});
-//    cout << c.first->second << ":"<< c.second << endl;
+    auto c = mp.erase(mp.end());
+    cout << c->first << ":"<< c->second << endl;
 //    auto d = mp.insert(tmp.begin(), tmp.end());
 //    cout << d.first->second << ":"<< d.second << endl;
     mp.insert({1,4});
