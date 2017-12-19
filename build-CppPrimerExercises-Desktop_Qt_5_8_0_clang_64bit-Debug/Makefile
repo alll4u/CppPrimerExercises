@@ -199,6 +199,7 @@ DIST          = ../../../../Qt5.8.0/5.8/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt5.8.0/5.8/clang_64/mkspecs/features/qt_config.prf \
 		../../../../Qt5.8.0/5.8/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../../Qt5.8.0/5.8/clang_64/mkspecs/features/spec_post.prf \
+		../CppPrimerExercises/.qmake.stash \
 		../../../../Qt5.8.0/5.8/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt5.8.0/5.8/clang_64/mkspecs/features/mac/sdk.prf \
 		../../../../Qt5.8.0/5.8/clang_64/mkspecs/features/toolchain.prf \
@@ -219,7 +220,7 @@ DIST          = ../../../../Qt5.8.0/5.8/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt5.8.0/5.8/clang_64/mkspecs/features/exceptions.prf \
 		../../../../Qt5.8.0/5.8/clang_64/mkspecs/features/yacc.prf \
 		../../../../Qt5.8.0/5.8/clang_64/mkspecs/features/lex.prf \
-		../CppPrimerExercises/CppPrimerExercises.pro  ../CppPrimerExercises/main.cpp
+		../CppPrimerExercises/CppPrimerExercises.pro sales_data.h ../CppPrimerExercises/main.cpp
 QMAKE_TARGET  = CppPrimerExercises
 DESTDIR       = 
 TARGET        = CppPrimerExercises
@@ -380,6 +381,7 @@ Makefile: ../CppPrimerExercises/CppPrimerExercises.pro ../../../../Qt5.8.0/5.8/c
 		../../../../Qt5.8.0/5.8/clang_64/mkspecs/features/qt_config.prf \
 		../../../../Qt5.8.0/5.8/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../../Qt5.8.0/5.8/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../Qt5.8.0/5.8/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt5.8.0/5.8/clang_64/mkspecs/features/mac/sdk.prf \
 		../../../../Qt5.8.0/5.8/clang_64/mkspecs/features/toolchain.prf \
@@ -551,6 +553,7 @@ Makefile: ../CppPrimerExercises/CppPrimerExercises.pro ../../../../Qt5.8.0/5.8/c
 ../../../../Qt5.8.0/5.8/clang_64/mkspecs/features/qt_config.prf:
 ../../../../Qt5.8.0/5.8/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../../../Qt5.8.0/5.8/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../Qt5.8.0/5.8/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../../../Qt5.8.0/5.8/clang_64/mkspecs/features/mac/sdk.prf:
 ../../../../Qt5.8.0/5.8/clang_64/mkspecs/features/toolchain.prf:
@@ -595,6 +598,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) $(TARGET) 
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -616,7 +620,7 @@ compiler_clean:
 
 ####### Compile
 
-main.o: ../CppPrimerExercises/main.cpp 
+main.o: ../CppPrimerExercises/main.cpp ../CppPrimerExercises/sales_data.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../CppPrimerExercises/main.cpp
 
 ####### Install
