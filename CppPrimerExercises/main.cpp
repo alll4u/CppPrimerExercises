@@ -47,8 +47,16 @@ int main(int argc, char *argv[])
      * @ brief   :unique_ptr
      *
      */
-    unique_ptr<int> up(new int(42));
-    unique_ptr<int> cpy_up = up;
+//    unique_ptr<int> up(new int(42));
+//    unique_ptr<int> cpy_up = up;
+    int ix=1024,*pi=&ix,*pi2=new int(2048);
+    typedef unique_ptr<int> IntP;
+//    IntP p0(ix);
+    IntP p1(pi);
+    IntP p2(pi2);
+    IntP p3(&ix);
+    IntP p4(new int(2048));
+    IntP p5(p2.get());
 
 
 //    int ia[]={0,2,2,2,1,1,2,3,5,8,13,21,55,89};
