@@ -24,6 +24,19 @@ int main(int argc, char *argv[])
      * @ brief   :struct constructor
      *
      */
+//    Sales_data sd1("0xABCD");
+//    print(cout, sd1);
+//    Sales_data sd2;
+//    print(cout, sd2);
+//    Sales_data sd3("0xZXCV", 12, 100);
+//    print(cout, sd3);
+//    Sales_data sd4(cin);
+//    print(cout, sd4);
+    /*
+     * @ No      :7.13
+     * @ brief   :rewrite page 299
+     *
+     */
 
     /*
      * @ No      :7.2
