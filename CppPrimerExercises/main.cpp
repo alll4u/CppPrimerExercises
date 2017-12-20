@@ -16,14 +16,14 @@ using namespace std;
 void process(shared_ptr<int> ptr){
     cout << "inside the process function:" << ptr.use_count() << endl;
 }
-char* trans(){
+constexpr char* trans(){
     return "abc";
 }
 
 int main(int argc, char *argv[])
 {
     cout << trans() << endl;
-    constexpr char* test_constexpr("da");
+    constexpr char* test_constexpr(trans());
     cout << test_constexpr << endl;
 
     /*
