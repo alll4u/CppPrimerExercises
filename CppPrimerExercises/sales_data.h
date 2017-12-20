@@ -11,7 +11,9 @@ struct Sales_data{
     Sales_data()=default;
     Sales_data(const string &s):bookNo(s){}
     Sales_data(const string &s, unsigned n, double p):bookNo(s), units_sold(n), revenue(p*n){ }
-    Sales_data(istream &s){read(s, *this);};
+    Sales_data(istream &s){
+        read(s, *this);
+    }
     //对象操作
     std::string isbn() const{
         return bookNo;

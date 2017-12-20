@@ -16,9 +16,25 @@ using namespace std;
 void process(shared_ptr<int> ptr){
     cout << "inside the process function:" << ptr.use_count() << endl;
 }
+char* trans(){
+    return "abc";
+}
 
 int main(int argc, char *argv[])
 {
+    cout << trans() << endl;
+    constexpr char* test_constexpr("da");
+    cout << test_constexpr << endl;
+
+    /*
+     * @ No      :Page 264
+     * @ brief   :desription
+     *
+     */
+//    string null_book = "9-999-99999-9";
+//    Sales_data item("123",123,333);
+//    item.combine(null_book);
+//    print(cout, item);
     /*
      * @ No      :7.11
      * @ brief   :struct constructor
