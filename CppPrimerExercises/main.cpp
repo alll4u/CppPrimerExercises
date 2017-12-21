@@ -23,7 +23,12 @@ constexpr char* trans(){
 
 int main(int argc, char *argv[])
 {
-    string s = "[3[a]b]";
+    /*
+     * @ No      :google adcanced learning path
+     * @ brief   :Compression and Decompression
+     *
+     */
+    string s = "2[3[a]c[b]]";
     stack<char> stk;
     for(int i=0;(i<s.size());i++){
         if(s[i]!=']'){
