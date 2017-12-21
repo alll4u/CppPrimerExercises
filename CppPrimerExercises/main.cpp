@@ -6,6 +6,7 @@
 #include <string>
 #include <map>
 #include <sales_data.h>
+#include <stack>
 /*
  * @ No      :9.26
  * @ brief   :单迭代器erase删除list元素
@@ -22,9 +23,52 @@ constexpr char* trans(){
 
 int main(int argc, char *argv[])
 {
-    cout << trans() << endl;
-    constexpr char* test_constexpr(trans());
-    cout << test_constexpr << endl;
+//    string a = "123456789";
+//    string b;
+//    b.append(string(a,0,3));
+//    b.append(string(a.begin(), a.end()-1));
+//    b.append(string(a.begin(), a.end()-1));
+
+//    cout << b<<endl;
+//    stack<int> c;
+//    c.push(2);
+//    int d = c.top();
+//    cout << d;
+
+    string s = "2[3[a]b]";
+    stack<char> stk;
+    stack<int> fore_idx;
+    for(int i=0;i<s.size();i++){
+
+        if(s[i]!=']'){
+            stk.push(s[i]);
+            if(s[i]=='[')
+                fore_idx.push(i);
+        }
+        else {
+            //take out the '[' idx
+            int temp_idx = fore_idx.top();
+            fore_idx.pop();
+            //pop this all elements
+            for(int j=0;j<i-temp_idx;j++)
+                stk.pop();
+            //times the string
+            int times = 1;
+            char temp_times = stk.top();
+            if(temp_times>'0' && temp_times<'9'){
+                stk.pop();
+                times = temp_times-'0';
+            }
+            string part_s;
+            for(int j=0;j<times;j++)
+                part_s.append(string(s, temp_idx+1, i-temp_idx-1));
+            for(int j=0;j<part_s.size();j++)
+                stk.push(part_s[j]);
+        }
+    }
+
+//    string a = "2";
+//    cout << (a[0]>'0'&&a[0]<'9');
 
     /*
      * @ No      :Page 264
