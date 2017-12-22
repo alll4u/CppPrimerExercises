@@ -12,7 +12,6 @@
  * @ brief   :单迭代器erase删除list元素
  *
  */
-
 using namespace std;
 void process(shared_ptr<int> ptr){
     cout << "inside the process function:" << ptr.use_count() << endl;
@@ -20,45 +19,52 @@ void process(shared_ptr<int> ptr){
 constexpr char* trans(){
     return "abc";
 }
-struct CmpByKeyLength {
-  bool operator()(const string& k1, const string& k2) {
-    return k1.length() < k2.length();
-  }
-};
-using PAIR = pair<int, int>;
-bool cmp_by_value(const PAIR& lhs, const PAIR& rhs) {
-  return lhs.first > rhs.first;
-}
-struct CmpByValue {
-    bool operator()(const PAIR& lhs, const PAIR& rhs) {
-        return lhs.first < rhs.first;
-    }
-};
+/*
+     * @ No      :leetcode 575
+     * @ brief   :come with the main func part leetcode 575
+     *
+     */
+//using PAIR = pair<int, int>;
+//bool cmp_by_value(const PAIR& lhs, const PAIR& rhs) {
+//  return lhs.first > rhs.first;
+//}
+//struct CmpByValue {
+//    bool operator()(const PAIR& lhs, const PAIR& rhs) {
+//        return lhs.first < rhs.first;
+//    }
+//};
 int main(int argc, char *argv[])
 {
-
-    map<int, int> test = {{1,2},{2,2},{3,2}};
-    vector<pair<int, int>> vec;
-    int sum=0;
-    for(auto e:test){
-        vec.push_back(make_pair(e.second, e.first));
-        //sum the amount of candies
-        sum += e.second;
-    }
-    cout << "sum:"<<sum<<endl;
-    //sort by candies quantities
-    sort(vec.begin(), vec.end(), CmpByValue());
-    int sister_get=0;
-    int i=0;
-    while(sister_get <= sum/2){
-        cout << "temp:"<<sister_get <<" i:"<<i<< endl;
-        sister_get += vec[i++].first;
-    }
-    cout << "sister can obtain :" << i << endl;
-//    sort(test.begin(), test.end(), [](pair<int, int> a, pair<int, int> b){return a.second > b.second;});
-    for(auto e:vec){
-        cout << e.first << ":" << e.second << endl;
-    }
+    /*
+     * @ No      :leetcode 575
+     * @ brief   :EZ problem;
+     *            wasting time;
+     *            but learn how to rewrite func in sort
+     * @ warning : the following answers are WRONG!
+     *
+     */
+//    map<int, int> test = {{1,2},{2,2},{3,2}};
+//    vector<pair<int, int>> vec;
+//    int sum=0;
+//    for(auto e:test){
+//        vec.push_back(make_pair(e.second, e.first));
+//        //sum the amount of candies
+//        sum += e.second;
+//    }
+//    cout << "sum:"<<sum<<endl;
+//    //sort by candies quantities
+//    sort(vec.begin(), vec.end(), CmpByValue());
+//    int sister_get=0;
+//    int i=0;
+//    while(sister_get <= sum/2){
+//        cout << "temp:"<<sister_get <<" i:"<<i<< endl;
+//        sister_get += vec[i++].first;
+//    }
+//    cout << "sister can obtain :" << i << endl;
+////    sort(test.begin(), test.end(), [](pair<int, int> a, pair<int, int> b){return a.second > b.second;});
+//    for(auto e:vec){
+//        cout << e.first << ":" << e.second << endl;
+//    }
 
 
     /*
