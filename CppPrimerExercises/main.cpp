@@ -20,54 +20,92 @@ void process(shared_ptr<int> ptr){
 constexpr char* trans(){
     return "abc";
 }
-
+struct CmpByKeyLength {
+  bool operator()(const string& k1, const string& k2) {
+    return k1.length() < k2.length();
+  }
+};
+using PAIR = pair<int, int>;
+bool cmp_by_value(const PAIR& lhs, const PAIR& rhs) {
+  return lhs.first > rhs.first;
+}
+struct CmpByValue {
+    bool operator()(const PAIR& lhs, const PAIR& rhs) {
+        return lhs.first < rhs.first;
+    }
+};
 int main(int argc, char *argv[])
 {
+
+    map<int, int> test = {{1,2},{2,2},{3,2}};
+    vector<pair<int, int>> vec;
+    int sum=0;
+    for(auto e:test){
+        vec.push_back(make_pair(e.second, e.first));
+        //sum the amount of candies
+        sum += e.second;
+    }
+    cout << "sum:"<<sum<<endl;
+    //sort by candies quantities
+    sort(vec.begin(), vec.end(), CmpByValue());
+    int sister_get=0;
+    int i=0;
+    while(sister_get <= sum/2){
+        cout << "temp:"<<sister_get <<" i:"<<i<< endl;
+        sister_get += vec[i++].first;
+    }
+    cout << "sister can obtain :" << i << endl;
+//    sort(test.begin(), test.end(), [](pair<int, int> a, pair<int, int> b){return a.second > b.second;});
+    for(auto e:vec){
+        cout << e.first << ":" << e.second << endl;
+    }
+
+
     /*
      * @ No      :google adcanced learning path
      * @ brief   :Compression and Decompression
      *
      */
-    string s = "2[3[a]c[b]]";
-    stack<char> stk;
-    for(int i=0;(i<s.size());i++){
-        if(s[i]!=']'){
-            stk.push(s[i]);
-        }
-        else {
-            //pop this all elements
-            stack<char> temp_stk;
-            while(stk.top()!='['){
-                temp_stk.push(stk.top());
-                cout << stk.top();
-                stk.pop();
-            }
-            stk.pop();
-            cout << endl;
-            //count times
-            int times = 1;
+//    string s = "2[3[a]c[b]]";
+//    stack<char> stk;
+//    for(int i=0;(i<s.size());i++){
+//        if(s[i]!=']'){
+//            stk.push(s[i]);
+//        }
+//        else {
+//            //pop this all elements
+//            stack<char> temp_stk;
+//            while(stk.top()!='['){
+//                temp_stk.push(stk.top());
+//                cout << stk.top();
+//                stk.pop();
+//            }
+//            stk.pop();
+//            cout << endl;
+//            //count times
+//            int times = 1;
 
-            if(!stk.empty()){
-                char temp_times = stk.top();
-                if(temp_times>'0' && temp_times<'9'){
-                    stk.pop();
-                    times = temp_times-'0';
-                }
-            }
-            //part_string
-            string part_s;
-            while(!temp_stk.empty()){
-                part_s.push_back(temp_stk.top());
-                temp_stk.pop();
-            }
-            //times the string
-            for(int j=0;j<times;j++){
-                for(int k=0;k<part_s.size();k++){
-                    stk.push(part_s[k]);
-                }
-            }
-        }
-    }
+//            if(!stk.empty()){
+//                char temp_times = stk.top();
+//                if(temp_times>'0' && temp_times<'9'){
+//                    stk.pop();
+//                    times = temp_times-'0';
+//                }
+//            }
+//            //part_string
+//            string part_s;
+//            while(!temp_stk.empty()){
+//                part_s.push_back(temp_stk.top());
+//                temp_stk.pop();
+//            }
+//            //times the string
+//            for(int j=0;j<times;j++){
+//                for(int k=0;k<part_s.size();k++){
+//                    stk.push(part_s[k]);
+//                }
+//            }
+//        }
+//    }
 
 //    string s = "2[3[a]b]";
 //    stack<char> stk;
