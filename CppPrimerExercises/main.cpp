@@ -33,8 +33,93 @@ constexpr char* trans(){
 //        return lhs.first < rhs.first;
 //    }
 //};
+int calculateDuel(int p1, int p2, int p1_armor=0, int p2_armor=0){
+//    bool flag=true;
+//    while(p1>0 && p2>0){
+//        if(flag)
+//            p2-=p1;
+//        else{
+//            p1-=p2;
+//        }
+//        flag=!flag;
+//    }
+//    p1=p1<0?0:p1;
+//    p2=p2<0?0:p2;
+//    cout << "p1:"<<p1<<endl;
+//    cout << "p2:"<<p2<<endl;
+
+    bool flag=true;
+    int hp1 = p1+p1_armor;
+    int hp2 = p2+p2_armor;
+    while(p1>0 && p2>0){
+
+        if(flag){
+            if(p1<p2_armor)
+                p2_armor-=p1;
+            else{
+                p2_armor=0;
+                p2=hp2-p1;
+            }
+        }
+        else{
+            if(p2<p1_armor)
+                p1_armor-=p2;
+            else{
+                p1_armor=0;
+                p1=hp1-p2;
+            }
+        }
+        flag=!flag;
+        hp1 = p1+p1_armor;
+        hp2 = p2+p2_armor;
+    }
+    p1=p1<0?0:p1;
+    p2=p2<0?0:p2;
+    cout << "p1:"<<p1<<endl;
+    cout << "p2:"<<p2<<endl;
+    return 0;
+}
+void Func(char str_arg[100]){
+    printf("%d/n", sizeof(str_arg));
+}
+/*
+     * @ No      :cpp Primer 13.7
+     * @ brief   :shallow copy
+     *
+     */
+class Point{
+public:
+    Point(int _x, int _y):x(_x),y(_y){};
+    Point(const Point &p){
+        x=p.x;
+        y=p.y;
+    }
+    ~Point()=delete;
+public:
+    int x;
+    int y;
+};
+
 int main(int argc, char *argv[])
 {
+    Point *source = new Point(10, 20);
+    Point *dest = source;
+    dest->x = 111;
+    cout << source->x << endl;
+    delete dest;
+//    vector<vector<int>> a = {{1,2},{3,4}};
+//    a.push_back({1,333,33});
+//    vector<vector<int>> b(a.size(), vector<int>(a[0].size(), 0));
+//    for(auto e:b){
+//        for(auto ele:e)
+//            cout << ele << endl;
+//    }
+//    char a[5] = {'a','c'};
+//    char *s = "hello world";
+//    for(int i=0;i<sizeof(s)-1;i++){
+//        a[i]=*(s+i);
+//    }
+//    printf("%s",a);
     /*
      * @ No      :leetcode 575
      * @ brief   :EZ problem;
